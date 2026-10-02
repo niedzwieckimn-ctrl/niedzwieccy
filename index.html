@@ -26,7 +26,7 @@
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23151410'/%3E%3Cpath d='M18 45V18l28 28V19' fill='none' stroke='%23c6a15b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=5" />
     <title>Niedźwieccy — mosiężne uchwyty klasy premium</title>
   </head>
   <body>
@@ -54,6 +54,7 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Główna nawigacja" data-nav>
         <a href="#collection" data-i18n="navCollection">Kolekcja</a>
+        <a href="katalog.html" data-catalog-link data-i18n="navCatalog">Katalog</a>
         <a href="#craft" data-i18n="navCraft">Rzemiosło</a>
         <a href="#b2b" data-i18n="navB2b">Współpraca B2B</a>
         <a href="#contact" data-i18n="navContact">Kontakt</a>
@@ -185,7 +186,12 @@
           </article>
         </div>
 
-        <p class="collection-note reveal" data-i18n="collectionNote">Pełna kolekcja obejmuje uchwyty relingowe, krawędziowe, muszlowe i gałki meblowe.</p>
+        <div class="collection-footer reveal">
+          <p class="collection-note" data-i18n="collectionNote">Pełna kolekcja obejmuje uchwyty relingowe, krawędziowe, muszlowe i gałki meblowe.</p>
+          <a class="button button-primary catalog-button" href="katalog.html" data-catalog-link>
+            <span data-i18n="interactiveCatalog">Otwórz katalog interaktywny</span><span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </section>
 
       <section class="about" id="production">
@@ -236,8 +242,39 @@
           </div>
           <p data-i18n="distributionLead">Nasi dystrybutorzy są już obecni w najważniejszych regionach Polski. Zapytaj nas o najbliższy punkt lub możliwość współpracy w Twoim kraju.</p>
         </div>
+
+        <div class="partner-grid">
+          <article class="partner-card partner-card-kraft reveal">
+            <div class="partner-code">PL · WROCŁAW</div>
+            <div class="partner-logo-wrap"><img src="assets/distributor-kraft.jpg" alt="Kraft — wyposażenie mebli" loading="lazy" /></div>
+            <div class="partner-copy"><h3>Kraft</h3><p data-i18n="kraftType">Wyposażenie mebli</p></div>
+          </article>
+
+          <a class="partner-card reveal" href="https://messingwaren-weidner.at/" target="_blank" rel="noopener noreferrer">
+            <div class="partner-code">AT · WIEN</div>
+            <div class="partner-monogram">MW</div>
+            <div class="partner-copy"><h3>Messingwaren Weidner</h3><p data-i18n="weidnerType">Wyroby z mosiądzu i okucia</p></div>
+            <span class="partner-visit" data-i18n="visitPartner">Odwiedź stronę</span>
+          </a>
+
+          <a class="partner-card reveal" href="https://www.schallenberg-shop.de/" target="_blank" rel="noopener noreferrer">
+            <div class="partner-code">DE · KÖLN</div>
+            <div class="partner-monogram">S</div>
+            <div class="partner-copy"><h3>Schallenberg GmbH</h3><p data-i18n="schallenbergType">Okucia budowlane, meblowe i okienne</p></div>
+            <span class="partner-visit" data-i18n="visitPartner">Odwiedź stronę</span>
+          </a>
+
+          <a class="partner-card reveal" href="https://schmidtschlaeger.at/produkte/" target="_blank" rel="noopener noreferrer">
+            <div class="partner-code">AT · WIEN</div>
+            <div class="partner-monogram">S<span>S</span></div>
+            <div class="partner-copy"><h3>Schmidtschläger</h3><p data-i18n="schmidtType">Okucia meblowe i technika bezpieczeństwa</p></div>
+            <span class="partner-visit" data-i18n="visitPartner">Odwiedź stronę</span>
+          </a>
+        </div>
+
+        <p class="city-label reveal" data-i18n="localNetwork">Pozostałe punkty partnerskie w Polsce</p>
         <div class="city-list reveal" aria-label="Miasta dystrybutorów">
-          <span>Kraków</span><span>Kielce</span><span>Rzeszów</span><span>Warszawa</span><span>Koszalin</span><span>Gdańsk</span><span>Grudziądz</span><span>Godętowo</span><span>Mielec</span>
+          <span>Wrocław</span><span>Kraków</span><span>Kielce</span><span>Rzeszów</span><span>Warszawa</span><span>Koszalin</span><span>Gdańsk</span><span>Grudziądz</span><span>Godętowo</span><span>Mielec</span>
         </div>
         <a class="text-link reveal" href="mailto:biuro@niedzwieccy.com?subject=Najbliższy%20dystrybutor" data-i18n="findPartner">Zapytaj o najbliższego dystrybutora</a>
       </section>
@@ -267,6 +304,6 @@
       <a href="#top" class="back-top" data-i18n="backTop">Na górę</a>
     </footer>
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>

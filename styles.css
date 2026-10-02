@@ -310,7 +310,9 @@ button, select { font: inherit; }
 .product-card > div { position: absolute; z-index: 2; left: 1.25rem; right: 1.25rem; bottom: 1rem; display: flex; justify-content: space-between; align-items: baseline; color: white; }
 .product-card h3 { margin: 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 400; }
 .product-card span { font-size: .72rem; letter-spacing: .12em; }
-.collection-note { margin: 2rem 0 0 auto; max-width: 44rem; padding-top: 1rem; border-top: 1px solid var(--line); color: #635d53; }
+.collection-footer { margin: 2.4rem 0 0 auto; max-width: 52rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.collection-note { margin: 0; max-width: 34rem; color: #635d53; }
+.catalog-button { flex: 0 0 auto; gap: .75rem; }
 
 .about { display: grid; grid-template-columns: .9fr 1.1fr; min-height: 42rem; background: var(--paper-warm); }
 .production-visual { position: relative; min-height: 42rem; overflow: hidden; border-right: 1px solid var(--line); background: #74684e; }
@@ -338,7 +340,23 @@ button, select { font: inherit; }
 .b2b-list p { margin: 0; color: #aaa59c; }
 
 .distribution { background: var(--white); }
+.partner-grid { margin-top: clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.partner-card { position: relative; min-height: 23rem; padding: 1.3rem; display: flex; flex-direction: column; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--white); text-decoration: none; overflow: hidden; transition: background .3s ease, color .3s ease, transform .3s ease; }
+a.partner-card:hover, a.partner-card:focus-visible { z-index: 1; color: var(--white); background: var(--ink); transform: translateY(-4px); }
+.partner-code { font-size: .65rem; font-weight: 700; letter-spacing: .17em; color: #716a5e; }
+a.partner-card:hover .partner-code, a.partner-card:focus-visible .partner-code { color: var(--brass-bright); }
+.partner-monogram { margin: auto 0; font-family: var(--serif); font-size: clamp(4rem, 7vw, 7rem); line-height: 1; letter-spacing: -.08em; }
+.partner-monogram span { color: var(--brass); }
+.partner-logo-wrap { margin: auto 0; height: 8rem; display: grid; place-items: center; background: white; }
+.partner-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
+.partner-copy h3 { margin: 0; font-family: var(--serif); font-size: 1.45rem; font-weight: 400; line-height: 1.05; }
+.partner-copy p { margin: .55rem 0 0; min-height: 2.6em; color: #6b655b; font-size: .82rem; line-height: 1.35; }
+a.partner-card:hover .partner-copy p, a.partner-card:focus-visible .partner-copy p { color: #b9b3a8; }
+.partner-visit { margin-top: 1.4rem; padding-top: .9rem; border-top: 1px solid var(--line); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+a.partner-card:hover .partner-visit, a.partner-card:focus-visible .partner-visit { border-color: rgba(255,255,255,.2); color: var(--brass-bright); }
+.city-label { margin: 3.5rem 0 0; color: #6b655b; font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .city-list { margin-top: 4rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.city-label + .city-list { margin-top: 1.25rem; }
 .city-list span { padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--serif); font-size: 1.05rem; }
 .text-link { display: inline-block; margin-top: 2.5rem; text-underline-offset: .35rem; text-decoration-color: var(--brass); font-weight: 600; }
 
@@ -388,6 +406,7 @@ footer p { font-size: .75rem; }
   .hero { grid-template-columns: 1fr 1fr; }
   .hero-facts { display: none; }
   .collection-grid { grid-template-columns: repeat(3, 1fr); }
+  .partner-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -413,6 +432,10 @@ footer p { font-size: .75rem; }
   .collection-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 16rem; }
   .product-card.product-tall { grid-row: span 1; }
   .product-card.product-wide { grid-column: span 2; }
+  .collection-footer { max-width: none; align-items: stretch; flex-direction: column; }
+  .catalog-button { align-self: flex-start; }
+  .partner-grid { grid-template-columns: 1fr; }
+  .partner-card { min-height: 19rem; }
   .production-visual { min-height: 31rem; border-right: 0; border-bottom: 1px solid var(--line); }
   .b2b-intro { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.15); }
   footer { grid-template-columns: 1fr; text-align: left; }
