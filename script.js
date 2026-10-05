@@ -74,15 +74,17 @@ const translations = {
   }
 };
 
+Object.keys(translations).forEach((lang) => Object.assign(translations[lang], SitePageCopy[lang]));
 const supported = Object.keys(translations);
 const selector = document.querySelector("[data-language]");
 const menuButton = document.querySelector("[data-menu]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
-const heroImage = document.querySelector(".hero-visual img");
 const productionVideo = document.querySelector("[data-production-video]");
 const distributorButtons = [...document.querySelectorAll("[data-distributor-city]")];
 const distributorCards = [...document.querySelectorAll("[data-distributor-card]")];
+const distributorResults = document.querySelector("[data-distributor-results]");
+const page = document.body.dataset.page || "home";
 
 function preferredLanguage() {
   const query = new URLSearchParams(window.location.search).get("lang");
@@ -94,11 +96,13 @@ function preferredLanguage() {
 function applyLanguage(code, updateUrl = false) {
   const lang = supported.includes(code) ? code : "pl";
   const copy = translations[lang];
+  const metaTitle = page === "brand" ? copy.brandMetaTitle : page === "partners" ? copy.partnersMetaTitle : copy.metaTitle;
+  const metaDescription = page === "brand" ? copy.brandMetaDescription : page === "partners" ? copy.partnersMetaDescription : copy.metaDescription;
   document.documentElement.lang = lang;
-  document.title = copy.metaTitle;
-  document.querySelector('meta[name="description"]').content = copy.metaDescription;
-  document.querySelector('meta[property="og:title"]').content = copy.metaTitle;
-  document.querySelector('meta[property="og:description"]').content = copy.metaDescription;
+  document.title = metaTitle;
+  document.querySelector('meta[name="description"]').content = metaDescription;
+  document.querySelector('meta[property="og:title"]').content = metaTitle;
+  document.querySelector('meta[property="og:description"]').content = metaDescription;
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const value = copy[element.dataset.i18n];
     if (value) element.textContent = value;
@@ -107,11 +111,13 @@ function applyLanguage(code, updateUrl = false) {
     const value = copy[element.dataset.i18nAlt];
     if (value) element.alt = value;
   });
+  document.querySelectorAll("[data-i18n-label]").forEach((element) => {
+    const value = copy[element.dataset.i18nLabel];
+    if (value) element.setAttribute("aria-label", value);
+  });
   selector.value = lang;
   selector.setAttribute("aria-label", copy.language);
-  document.querySelectorAll("[data-catalog-link]").forEach((link) => {
-    link.href = `katalog.html?lang=${lang}`;
-  });
+  SiteNavigation.apply(lang);
   localStorage.setItem("niedzwieccy-language", lang);
   if (updateUrl) {
     const url = new URL(window.location.href);
@@ -146,6 +152,7 @@ function showDistributors(city) {
   distributorCards.forEach((card) => {
     card.hidden = card.dataset.distributorCard !== city;
   });
+  if (distributorResults) distributorResults.dataset.single = String(distributorCards.filter((card) => !card.hidden).length === 1);
 }
 
 distributorButtons.forEach((button) => {
@@ -164,6 +171,7 @@ document.querySelectorAll(".reveal").forEach((element, index) => {
 });
 
 if (productionVideo) {
+  productionVideo.addEventListener("error", () => productionVideo.closest(".process-media")?.classList.add("media-unavailable"));
   const videoObserver = new IntersectionObserver((entries, currentObserver) => {
     if (!entries[0].isIntersecting) return;
     const source = productionVideo.querySelector("source[data-src]");
@@ -180,10 +188,6 @@ if (productionVideo) {
 let ticking = false;
 function updateMotion() {
   header.classList.toggle("scrolled", window.scrollY > 96);
-  if (heroImage && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const shift = Math.min(5, -3 + window.scrollY * 0.008);
-    heroImage.style.setProperty("--hero-shift", `${shift}%`);
-  }
   ticking = false;
 }
 window.addEventListener("scroll", () => {
@@ -195,3 +199,20 @@ window.addEventListener("scroll", () => {
 updateMotion();
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
 applyLanguage(preferredLanguage());
+if (distributorButtons.length) showDistributors(distributorButtons[0].dataset.distributorCity);
+
+// Existing links to sections that now have their own pages keep working.
+const legacyDestinations = {
+  craft: "marka.html", production: "marka.html#produkcja",
+  b2b: "partnerzy.html", distribution: "partnerzy.html#dystrybutorzy"
+};
+function followLegacySection() {
+  if (page !== "home") return;
+  const target = legacyDestinations[window.location.hash.slice(1)];
+  if (!target) return;
+  const destination = new URL(target, window.location.href);
+  destination.searchParams.set("lang", document.documentElement.lang);
+  window.location.replace(destination.href);
+}
+window.addEventListener("hashchange", followLegacySection);
+followLegacySection();

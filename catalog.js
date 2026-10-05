@@ -113,11 +113,7 @@ function catalogImage(product) {
 }
 
 function setHomeLinks(lang) {
-  document.querySelectorAll("[data-home-link]").forEach((link) => {
-    if (!link.dataset.baseHref) link.dataset.baseHref = link.getAttribute("href");
-    const [path, hash = ""] = link.dataset.baseHref.split("#");
-    link.href = `${path}?lang=${lang}${hash ? `#${hash}` : ""}`;
-  });
+  SiteNavigation.apply(lang);
 }
 
 function applyLanguage(lang, updateUrl = false) {
