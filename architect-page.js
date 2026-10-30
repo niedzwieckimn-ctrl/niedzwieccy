@@ -91,7 +91,9 @@ function applyArchitectCopy(){
   document.querySelector('meta[property="og:description"]').content=copy.meta;
   const live=['niedzwieccy.com','www.niedzwieccy.com'].includes(location.hostname);
   const panel=live?'https://niedzwieccy-architekci.netlify.app/':'https://niedzwieccy-architekci-staging.netlify.app/';
-  document.querySelectorAll('[data-architect-panel]').forEach(link=>{link.href=panel;});
+    document.querySelectorAll('[data-architect-panel]').forEach(link=>{
+    link.href=panel+(link.dataset.architectCopy==='join'?'?mode=register':'');
+  });
 }
 document.querySelector('[data-language]').addEventListener('change',applyArchitectCopy);
 applyArchitectCopy();
