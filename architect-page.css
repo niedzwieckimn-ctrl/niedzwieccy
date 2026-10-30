@@ -1,0 +1,21 @@
+.architects-page .architect-hero{display:grid;grid-template-columns:1fr 1fr;min-height:38rem;background:#171918;color:#fff}
+.architects-page .architect-hero-copy{padding:clamp(3rem,6vw,7rem) var(--pad);align-self:center}
+.architects-page .architect-hero h1{font:400 clamp(3.2rem,6vw,7rem)/.98 var(--serif);max-width:10ch;margin:1.2rem 0}
+.architects-page .architect-hero p{max-width:38rem;color:#d4d2cb;line-height:1.7}
+.architects-page .architect-hero-image{min-height:32rem;overflow:hidden}
+.architects-page .architect-hero-image img{display:block;width:100%;height:100%;object-fit:cover}
+.architects-page .architect-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.architects-page .architect-note{font-size:.83rem;margin-top:1rem}
+.architects-page .architect-benefits{padding:clamp(3rem,6vw,6rem) var(--pad);background:#f8f7f4}
+.architects-page .architect-benefits h2,.architects-page .architect-final h2{font:400 clamp(2.4rem,4vw,4.5rem)/1.1 var(--serif);margin:1rem 0 2rem}
+.architects-page .architect-benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.architects-page .architect-benefits article{background:#fff;padding:clamp(1.5rem,2vw,2.5rem);border:1px solid #e6e0d7;min-height:17rem}
+.architects-page .architect-benefits article span{color:var(--brass-dark);font-size:.76rem;letter-spacing:.16em}
+.architects-page .architect-benefits h3{font:400 1.75rem var(--serif);margin:2rem 0 .7rem}
+.architects-page .architect-benefits p{font-size:.93rem;line-height:1.65;color:#585750}
+.architects-page .architect-final{padding:clamp(3rem,6vw,6rem) var(--pad);display:flex;align-items:end;justify-content:space-between;gap:3rem;background:#24302e;color:#fff}
+.architects-page .architect-final>div{max-width:46rem}
+.architects-page .architect-final p{color:#d4d2cb;line-height:1.7}
+.architects-page .architect-final .button{flex:none}
+@media(max-width:1000px){.architects-page .architect-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.architects-page .architect-hero{grid-template-columns:1fr}.architects-page .architect-hero-copy{padding-block:3rem}.architects-page .architect-hero-image{min-height:17rem;max-height:23rem}.architects-page .architect-benefits-grid{grid-template-columns:1fr}.architects-page .architect-benefits article{min-height:0}.architects-page .architect-final{display:block}.architects-page .architect-final .button{margin-top:1.5rem}}

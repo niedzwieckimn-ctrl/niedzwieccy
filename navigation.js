@@ -1,11 +1,11 @@
 const SiteNavigation = {
   copy: {
-    pl: { home: "Strona główna", catalog: "Katalog", brand: "O marce", partners: "Partnerzy", contact: "Kontakt" },
-    de: { home: "Startseite", catalog: "Katalog", brand: "Über uns", partners: "Partner", contact: "Kontakt" },
-    en: { home: "Home", catalog: "Catalogue", brand: "Our story", partners: "Partners", contact: "Contact" },
-    es: { home: "Inicio", catalog: "Catálogo", brand: "La marca", partners: "Socios", contact: "Contacto" },
-    fr: { home: "Accueil", catalog: "Catalogue", brand: "La marque", partners: "Partenaires", contact: "Contact" },
-    it: { home: "Home", catalog: "Catalogo", brand: "Il marchio", partners: "Partner", contact: "Contatti" }
+    pl: { home: "Strona główna", catalog: "Katalog", brand: "O marce", partners: "Partnerzy", architects: "Dla Architektów", contact: "Kontakt" },
+    de: { home: "Startseite", catalog: "Katalog", brand: "Über uns", partners: "Partner", architects: "Für Architekten", contact: "Kontakt" },
+    en: { home: "Home", catalog: "Catalogue", brand: "Our story", partners: "Partners", architects: "For Architects", contact: "Contact" },
+    es: { home: "Inicio", catalog: "Catálogo", brand: "La marca", partners: "Socios", architects: "Para arquitectos", contact: "Contacto" },
+    fr: { home: "Accueil", catalog: "Catalogue", brand: "La marque", partners: "Partenaires", architects: "Pour les architectes", contact: "Contact" },
+    it: { home: "Home", catalog: "Catalogo", brand: "Il marchio", partners: "Partner", architects: "Per architetti", contact: "Contatti" }
   },
   apply(lang) {
     const copy = this.copy[lang] || this.copy.pl;
